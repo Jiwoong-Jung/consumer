@@ -55,7 +55,7 @@ public class RabbitMQConfig {
     @Bean
     public Binding jsonBinding() {
         return BindingBuilder
-                .bind(queue())
+                .bind(jsonQueue())
                 .to(exchange())
                 .with(routingJsonKey);
     }
@@ -77,6 +77,13 @@ public class RabbitMQConfig {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(null);
+        return factory;
+    }
+
+    @Bean
+    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        factory.setMessageConverter(new Jackson2JsonMessageConverter());
         return factory;
     }
 }
