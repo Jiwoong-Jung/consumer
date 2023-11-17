@@ -83,7 +83,7 @@ public class RabbitMQConfig {
     @Bean
     public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory() {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setMessageConverter(new Jackson2JsonMessageConverter());
+        factory.setMessageConverter(converter());
         return factory;
     }
 }

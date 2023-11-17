@@ -1,16 +1,20 @@
 package net.rabbitmq.springboot.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
-public class User {
+@Getter
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@Builder
+public class User implements Serializable {
     private int id;
     private String firstName;
     private String lastName;
 
-    public User() {}
+    public User() {
+
+    }
 }
